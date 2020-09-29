@@ -55,3 +55,12 @@ func (k *KelasEntity) Delete(id string) (kelas domain.Kelas, err error) {
 
 	return
 }
+
+// Update ...
+func (k *KelasEntity) Update(c domain.Kelas, id string) (kelas domain.Kelas, err error) {
+	kelas, err = k.kelasRepo.Update(c, id)
+	if err != nil {
+		return domain.Kelas{}, err
+	}
+	return
+}

@@ -2,6 +2,7 @@ package handler
 
 import (
 	"go-clean/domain"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -21,6 +22,7 @@ func KelasHandlerFunc(r *gin.RouterGroup, us domain.KelasEntity) {
 	r.POST("/kelas", handler.CreateKelas)
 	r.GET("/kelas/:id", handler.ShowKelas)
 	r.DELETE("/kelas/:id", handler.DeleteKelas)
+	r.PUT("/kelas/:id", handler.UpdateKelas)
 }
 
 // GetKelas ...
@@ -61,5 +63,25 @@ func (a *KelasHandler) DeleteKelas(c *gin.Context) {
 	}
 	c.JSON(200, gin.H{
 		"message": "Success",
+	})
+}
+
+// UpdateKelas ...
+func (a *KelasHandler) UpdateKelas(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	k := domain.Kelas{
+		ID:        id,
+		NamaKelas: c.PostForm("nama_kelas"),
+	}
+	kelas, err := a.KelasEntity.Update(k, c.Param("id"))
+	if err != nil {
+		c.JSON(400, gin.H{
+			"message": "Failed",
+		})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"data": kelas,
 	})
 }

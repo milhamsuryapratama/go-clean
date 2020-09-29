@@ -16,6 +16,7 @@ type KelasEntity interface {
 	Create(kelas Kelas) (Kelas, error)
 	Show(id string) (Kelas, error)
 	Delete(id string) (Kelas, error)
+	Update(kelas Kelas, id string) (Kelas, error)
 }
 
 // KelasRepository ...
@@ -24,4 +25,5 @@ type KelasRepository interface {
 	Create(kelas Kelas) (Kelas, error)
 	Show(id string) (Kelas, error)
 	Delete(id string) (Kelas, error)
+	Update(kelas Kelas, id string) (Kelas, error)
 }
