@@ -35,3 +35,13 @@ func (k *KelasEntity) Create(c domain.Kelas) (kelas domain.Kelas, err error) {
 
 	return
 }
+
+// Show ...
+func (k *KelasEntity) Show(id string) (kelas domain.Kelas, err error) {
+	kelas, err = k.kelasRepo.Show(id)
+	if err != nil {
+		return domain.Kelas{}, err
+	}
+
+	return
+}

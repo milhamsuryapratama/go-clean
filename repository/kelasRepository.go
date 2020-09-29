@@ -33,3 +33,10 @@ func (m *KelasRepository) Create(k domain.Kelas) (kelas domain.Kelas, err error)
 	}
 	return k, nil
 }
+
+// Show ...
+func (m *KelasRepository) Show(id string) (res domain.Kelas, err error) {
+	var kelas domain.Kelas
+	m.Conn.First(&kelas, id)
+	return kelas, nil
+}
