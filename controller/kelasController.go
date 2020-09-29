@@ -45,3 +45,13 @@ func (k *KelasEntity) Show(id string) (kelas domain.Kelas, err error) {
 
 	return
 }
+
+// Delete ...
+func (k *KelasEntity) Delete(id string) (kelas domain.Kelas, err error) {
+	kelas, err = k.kelasRepo.Delete(id)
+	if err != nil {
+		return domain.Kelas{}, err
+	}
+
+	return
+}

@@ -20,6 +20,7 @@ func KelasHandlerFunc(r *gin.RouterGroup, us domain.KelasEntity) {
 	r.GET("/kelas", handler.GetKelas)
 	r.POST("/kelas", handler.CreateKelas)
 	r.GET("/kelas/:id", handler.ShowKelas)
+	r.DELETE("/kelas/:id", handler.DeleteKelas)
 }
 
 // GetKelas ...
@@ -47,4 +48,18 @@ func (a *KelasHandler) CreateKelas(c *gin.Context) {
 func (a *KelasHandler) ShowKelas(c *gin.Context) {
 	kelas, _ := a.KelasEntity.Show(c.Param("id"))
 	c.JSON(200, gin.H{"data": kelas})
+}
+
+// DeleteKelas ...
+func (a *KelasHandler) DeleteKelas(c *gin.Context) {
+	_, err := a.KelasEntity.Delete(c.Param("id"))
+	if err != nil {
+		c.JSON(400, gin.H{
+			"message": "Failed",
+		})
+		return
+	}
+	c.JSON(200, gin.H{
+		"message": "Success",
+	})
 }

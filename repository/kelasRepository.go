@@ -40,3 +40,10 @@ func (m *KelasRepository) Show(id string) (res domain.Kelas, err error) {
 	m.Conn.First(&kelas, id)
 	return kelas, nil
 }
+
+// Delete ...
+func (m *KelasRepository) Delete(id string) (res domain.Kelas, err error) {
+	var kelas domain.Kelas
+	m.Conn.Delete(&kelas, id)
+	return res, nil
+}

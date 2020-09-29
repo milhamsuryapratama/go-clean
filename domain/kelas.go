@@ -15,6 +15,7 @@ type KelasEntity interface {
 	Get(ctx context.Context) ([]Kelas, error)
 	Create(kelas Kelas) (Kelas, error)
 	Show(id string) (Kelas, error)
+	Delete(id string) (Kelas, error)
 }
 
 // KelasRepository ...
@@ -22,4 +23,5 @@ type KelasRepository interface {
 	Get(ctx context.Context) (res []Kelas, err error)
 	Create(kelas Kelas) (Kelas, error)
 	Show(id string) (Kelas, error)
+	Delete(id string) (Kelas, error)
 }
