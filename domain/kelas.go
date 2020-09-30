@@ -7,7 +7,8 @@ import (
 // Kelas is ...
 type Kelas struct {
 	ID        int
-	NamaKelas string `json:"nama_kelas"`
+	NamaKelas string  `json:"nama_kelas"`
+	Siswa     []Siswa `gorm:"[]foreignkey:KelasID"`
 }
 
 // KelasEntity ...
