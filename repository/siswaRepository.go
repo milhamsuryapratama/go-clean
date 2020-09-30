@@ -23,3 +23,10 @@ func (s *SiswaRepository) Get(ctx context.Context) (res []domain.Siswa, err erro
 	s.Conn.Preload("Kelas").Find(&siswa)
 	return siswa, nil
 }
+
+// Show ...
+func (s *SiswaRepository) Show(id string) (res domain.Siswa, err error) {
+	var siswa domain.Siswa
+	s.Conn.Preload("Kelas").First(&siswa, id)
+	return siswa, nil
+}

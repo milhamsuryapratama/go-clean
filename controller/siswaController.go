@@ -26,3 +26,13 @@ func (s *SiswaEntity) Get(c context.Context) (res []domain.Siswa, err error) {
 
 	return
 }
+
+// Show ...
+func (s *SiswaEntity) Show(id string) (siswa domain.Siswa, err error) {
+	siswa, err = s.siswaRepo.Show(id)
+	if err != nil {
+		return domain.Siswa{}, err
+	}
+
+	return
+}
