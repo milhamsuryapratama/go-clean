@@ -18,5 +18,9 @@ func main() {
 	api := r.Group("/api")
 	handler.KelasHandlerFunc(api, entity)
 
+	siswaRepo := repository.NewSiswaRepository(db)
+	siswaEntity := controller.NewSiswaEntity(siswaRepo)
+	handler.SiswaHandlerFunc(api, siswaEntity)
+
 	r.Run()
 }
