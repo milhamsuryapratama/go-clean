@@ -6,7 +6,7 @@ import (
 
 // Siswa ...
 type Siswa struct {
-	ID      int
+	ID      int `gorm:"primaryKey"`
 	Nama    string
 	Jk      string
 	Alamat  string
@@ -28,10 +28,12 @@ func (Siswa) TableName() string {
 type SiswaEntity interface {
 	Get(ctx context.Context) ([]Siswa, error)
 	Show(id string) (Siswa, error)
+	Create(siswa Siswa) (Siswa, error)
 }
 
 // SiswaRepository ...
 type SiswaRepository interface {
 	Get(ctx context.Context) (res []Siswa, err error)
 	Show(id string) (Siswa, error)
+	Create(siswa Siswa) (Siswa, error)
 }

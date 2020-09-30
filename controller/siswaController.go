@@ -36,3 +36,13 @@ func (s *SiswaEntity) Show(id string) (siswa domain.Siswa, err error) {
 
 	return
 }
+
+// Create ...
+func (s *SiswaEntity) Create(c domain.Siswa) (siswa domain.Siswa, err error) {
+	siswa, err = s.siswaRepo.Create(c)
+	if err != nil {
+		return siswa, err
+	}
+
+	return
+}

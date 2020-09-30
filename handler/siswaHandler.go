@@ -2,6 +2,7 @@ package handler
 
 import (
 	"go-clean/domain"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,6 +20,7 @@ func SiswaHandlerFunc(r *gin.RouterGroup, us domain.SiswaEntity) {
 
 	r.GET("/siswa", handler.GetSiswa)
 	r.GET("/siswa/:id", handler.ShowSiswa)
+	r.POST("/siswa", handler.CreateSiswa)
 }
 
 // GetSiswa ...
@@ -31,4 +33,23 @@ func (a *SiswaHandler) GetSiswa(c *gin.Context) {
 func (a *SiswaHandler) ShowSiswa(c *gin.Context) {
 	siswa, _ := a.SiswaEntity.Show(c.Param("id"))
 	c.JSON(200, gin.H{"data": siswa})
+}
+
+// CreateSiswa ...
+func (a *SiswaHandler) CreateSiswa(c *gin.Context) {
+	kelasID, _ := strconv.Atoi(c.PostForm("kelas_id"))
+	s := domain.Siswa{
+		ID:      12,
+		Nama:    c.PostForm("nama"),
+		Jk:      c.PostForm("jk"),
+		Alamat:  c.PostForm("alamat"),
+		KelasID: kelasID,
+	}
+	siswa, err := a.SiswaEntity.Create(s)
+	if err != nil {
+		c.JSON(400, gin.H{"error": err})
+		return
+	}
+
+	c.JSON(201, gin.H{"data": siswa})
 }

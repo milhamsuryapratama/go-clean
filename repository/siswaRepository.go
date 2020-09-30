@@ -30,3 +30,13 @@ func (s *SiswaRepository) Show(id string) (res domain.Siswa, err error) {
 	s.Conn.Preload("Kelas").First(&siswa, id)
 	return siswa, nil
 }
+
+// Create ...
+func (s *SiswaRepository) Create(k domain.Siswa) (siswa domain.Siswa, err error) {
+	n := s.Conn.Create(k)
+	if n != nil {
+		return k, err
+	}
+
+	return k, nil
+}
