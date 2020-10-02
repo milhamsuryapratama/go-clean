@@ -40,3 +40,15 @@ func (s *SiswaRepository) Create(k domain.Siswa) (siswa domain.Siswa, err error)
 
 	return k, nil
 }
+
+// Update ...
+func (s *SiswaRepository) Update(k domain.Siswa, id string) (res domain.Siswa, err error) {
+	var siswa domain.Siswa
+	s.Conn.First(&siswa, id)
+	siswa.Nama = k.Nama
+	siswa.Jk = k.Jk
+	siswa.Alamat = k.Alamat
+	siswa.KelasID = k.KelasID
+	s.Conn.Save(&siswa)
+	return siswa, nil
+}

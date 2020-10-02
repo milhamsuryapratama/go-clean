@@ -29,6 +29,7 @@ type SiswaEntity interface {
 	Get(ctx context.Context) ([]Siswa, error)
 	Show(id string) (Siswa, error)
 	Create(siswa Siswa) (Siswa, error)
+	Update(siswa Siswa, id string) (Siswa, error)
 }
 
 // SiswaRepository ...
@@ -36,4 +37,5 @@ type SiswaRepository interface {
 	Get(ctx context.Context) (res []Siswa, err error)
 	Show(id string) (Siswa, error)
 	Create(siswa Siswa) (Siswa, error)
+	Update(siswa Siswa, id string) (Siswa, error)
 }

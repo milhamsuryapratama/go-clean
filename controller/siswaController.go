@@ -46,3 +46,13 @@ func (s *SiswaEntity) Create(c domain.Siswa) (siswa domain.Siswa, err error) {
 
 	return
 }
+
+// Update ...
+func (s *SiswaEntity) Update(c domain.Siswa, id string) (siswa domain.Siswa, err error) {
+	siswa, err = s.siswaRepo.Update(c, id)
+	if err != nil {
+		return domain.Siswa{}, err
+	}
+
+	return
+}
