@@ -2,7 +2,6 @@ package handler
 
 import (
 	"go-clean/domain"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -67,9 +66,7 @@ func (a *KelasHandler) DeleteKelas(c *gin.Context) {
 
 // UpdateKelas ...
 func (a *KelasHandler) UpdateKelas(c *gin.Context) {
-	id, _ := strconv.Atoi(c.Param("id"))
 	k := domain.Kelas{
-		ID:        id,
 		NamaKelas: c.PostForm("nama_kelas"),
 	}
 	kelas, err := a.KelasEntity.Update(k, c.Param("id"))

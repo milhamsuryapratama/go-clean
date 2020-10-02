@@ -26,11 +26,7 @@ func (m *KelasRepository) Get(ctx context.Context) (res []domain.Kelas, err erro
 
 // Create ...
 func (m *KelasRepository) Create(k domain.Kelas) (kelas domain.Kelas, err error) {
-	b := m.Conn.Create(&k)
-	if b != nil {
-		j := domain.Kelas{}
-		return j, err
-	}
+	m.Conn.Create(&k)
 	return k, nil
 }
 
