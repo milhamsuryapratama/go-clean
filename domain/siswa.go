@@ -6,7 +6,7 @@ import (
 
 // Siswa ...
 type Siswa struct {
-	ID      int `gorm:"primaryKey"`
+	ID      int `gorm:"primary_key;auto_increment"`
 	Nama    string
 	Jk      string
 	Alamat  string
