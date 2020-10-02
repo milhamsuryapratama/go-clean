@@ -6,7 +6,7 @@ import (
 
 // Kelas is ...
 type Kelas struct {
-	ID        int
+	ID        int     `gorm:"primary_key;auto_increment"`
 	NamaKelas string  `json:"nama_kelas"`
 	Siswa     []Siswa `gorm:"[]foreignkey:KelasID"`
 }
