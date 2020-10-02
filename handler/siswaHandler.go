@@ -39,7 +39,6 @@ func (a *SiswaHandler) ShowSiswa(c *gin.Context) {
 func (a *SiswaHandler) CreateSiswa(c *gin.Context) {
 	kelasID, _ := strconv.Atoi(c.PostForm("kelas_id"))
 	s := domain.Siswa{
-		ID:      12,
 		Nama:    c.PostForm("nama"),
 		Jk:      c.PostForm("jk"),
 		Alamat:  c.PostForm("alamat"),
