@@ -34,7 +34,6 @@ func (a *KelasHandler) GetKelas(c *gin.Context) {
 // CreateKelas ...
 func (a *KelasHandler) CreateKelas(c *gin.Context) {
 	k := domain.Kelas{
-		ID:        24,
 		NamaKelas: c.PostForm("nama_kelas"),
 	}
 	kelas, err := a.KelasEntity.Create(k)
