@@ -13,8 +13,8 @@ func Connect() *gorm.DB {
 	db, _ := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	hasKelasTable := db.Migrator().HasTable(domain.Kelas{})
-	// hasSiswaTable := db.Migrator().HasTable(domain.Siswa{})
-	if !hasKelasTable {
+	hasSiswaTable := db.Migrator().HasTable(domain.Siswa{})
+	if !hasKelasTable && !hasSiswaTable {
 		db.AutoMigrate(domain.Kelas{})
 		db.AutoMigrate(domain.Siswa{})
 	}
