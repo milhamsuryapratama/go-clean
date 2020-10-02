@@ -20,7 +20,7 @@ func NewKelasRepository(Conn *gorm.DB) domain.KelasRepository {
 // Get ...
 func (m *KelasRepository) Get(ctx context.Context) (res []domain.Kelas, err error) {
 	var kelas []domain.Kelas
-	m.Conn.Preload("Siswa").Find(&kelas)
+	m.Conn.Find(&kelas)
 	return kelas, nil
 }
 
