@@ -22,6 +22,7 @@ func SiswaHandlerFunc(r *gin.RouterGroup, us domain.SiswaEntity) {
 	r.GET("/siswa/:id", handler.ShowSiswa)
 	r.POST("/siswa", handler.CreateSiswa)
 	r.PUT("/siswa/:id", handler.UpdateSiswa)
+	r.DELETE("/siswa/:id", handler.DeleteSiswa)
 }
 
 // GetSiswa ...
@@ -73,5 +74,20 @@ func (a *SiswaHandler) UpdateSiswa(c *gin.Context) {
 
 	c.JSON(200, gin.H{
 		"data": siswa,
+	})
+}
+
+// DeleteSiswa ...
+func (a *SiswaHandler) DeleteSiswa(c *gin.Context) {
+	_, err := a.SiswaEntity.Delete(c.Param("id"))
+	if err != nil {
+		c.JSON(400, gin.H{
+			"message": "Failed",
+		})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"message": "Success",
 	})
 }

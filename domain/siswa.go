@@ -30,6 +30,7 @@ type SiswaEntity interface {
 	Show(id string) (Siswa, error)
 	Create(siswa Siswa) (Siswa, error)
 	Update(siswa Siswa, id string) (Siswa, error)
+	Delete(id string) (Siswa, error)
 }
 
 // SiswaRepository ...
@@ -38,4 +39,5 @@ type SiswaRepository interface {
 	Show(id string) (Siswa, error)
 	Create(siswa Siswa) (Siswa, error)
 	Update(siswa Siswa, id string) (Siswa, error)
+	Delete(id string) (Siswa, error)
 }

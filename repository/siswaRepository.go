@@ -52,3 +52,10 @@ func (s *SiswaRepository) Update(k domain.Siswa, id string) (res domain.Siswa, e
 	s.Conn.Save(&siswa)
 	return siswa, nil
 }
+
+// Delete ...
+func (s *SiswaRepository) Delete(id string) (res domain.Siswa, err error) {
+	var siswa domain.Siswa
+	s.Conn.Delete(&siswa, id)
+	return res, nil
+}

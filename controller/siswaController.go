@@ -56,3 +56,13 @@ func (s *SiswaEntity) Update(c domain.Siswa, id string) (siswa domain.Siswa, err
 
 	return
 }
+
+// Delete ...
+func (s *SiswaEntity) Delete(id string) (siswa domain.Siswa, err error) {
+	siswa, err = s.siswaRepo.Delete(id)
+	if err != nil {
+		return domain.Siswa{}, err
+	}
+
+	return
+}
