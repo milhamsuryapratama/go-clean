@@ -2,13 +2,15 @@ package domain
 
 import (
 	"context"
+
+	"gorm.io/gorm"
 )
 
 // Kelas is ...
 type Kelas struct {
-	ID        int     `gorm:"primary_key;auto_increment"`
-	NamaKelas string  `json:"nama_kelas"`
-	Siswa     []Siswa `gorm:"[]foreignkey:KelasID"`
+	gorm.Model
+	NamaKelas string `gorm:"size:255;unique;not null"`
+	// Siswa     []Siswa `gorm:"[]foreignkey:KelasID"`
 }
 
 // KelasEntity ...

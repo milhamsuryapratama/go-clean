@@ -2,16 +2,18 @@ package domain
 
 import (
 	"context"
+
+	"gorm.io/gorm"
 )
 
 // Siswa ...
 type Siswa struct {
-	ID      int `gorm:"primary_key;auto_increment"`
+	gorm.Model
 	Nama    string
 	Jk      string
 	Alamat  string
 	KelasID int   `sql:"index"`
-	Kelas   Kelas `gorm:"foreignkey:KelasID"`
+	Kelas   Kelas `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 }
 
 // Tabler ...
