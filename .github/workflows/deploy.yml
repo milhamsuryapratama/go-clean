@@ -47,7 +47,8 @@ jobs:
 
     - name: Test
       run: go test -v .
-    - uses: akhileshns/heroku-deploy@v3.4.6  
+    - name: Deploy to Heroku
+      uses: AkhileshNS/heroku-deploy@v3.5.7  
       with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "go-clean-api"
