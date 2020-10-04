@@ -40,11 +40,9 @@ jobs:
             dep ensure
         fi
 
-    - name: Build
-      run: go build -v .
-
     - name: Test
       run: go test -v .
+      
     - name: Deploy to Heroku
       uses: AkhileshNS/heroku-deploy@v3.5.7  
       with:
