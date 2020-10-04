@@ -3,14 +3,15 @@ package config
 import (
 	"go-clean/domain"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 // Connect ...
 func Connect() *gorm.DB {
-	dsn := "user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
-	db, _ := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	// dsn := "root:@tcp(127.0.0.1:3306)/go-api?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "user=postgres password=ilham21 dbname=go-api port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	db, _ := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	hasKelasTable := db.Migrator().HasTable(domain.Kelas{})
 	hasSiswaTable := db.Migrator().HasTable(domain.Siswa{})
