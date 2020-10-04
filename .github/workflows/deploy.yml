@@ -53,3 +53,4 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "go-clean-api"
           heroku_email: "ilham.heroku@gmail.com"
+          branch: "master"  
